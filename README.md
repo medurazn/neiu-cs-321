@@ -1,2 +1,11 @@
-# neiu-cs-321
- 
+# Application Name: 
+ValPal
+
+# Project Topic/Objective: 
+This web application is a valet parking application for employees to log customer's vehicles and for customers to retrieve their vehicles. Employees will have a page where they can input a vehicle's information like ticket number, make, model, year, color, vehicle location, license plate, valet attendant initials, and damage around the vehicle. Moreover, an employee can input time of arrival and departure and submit the data to a database. Additionally, the web application will show different graphs for employers to view and analyze how their businnesses are progressing. For example, employers can view a graph about how many vehicles are being parked every day and decide the amount of staff needed for that specific location. Vehicles owners will have an option to create an account for retrieving their vehicle at locations like restaurants, hospitals, hotels, etc. The page will also output graphs of locations visited by the owner. At the request vehicle page, vehicle owners input the ticket number given, time of retrieval, and specific location to retrieve vehicle (for hospitals). Additionally, vehicle owners will have the option to tip the driver or pay for the service using PayPal or credit card and submit the request. The request will go to the employer's home page for the vehicle to be retrieved.
+
+# Motivation: 
+I always wanted to create a web application for valet employers and vehicle owners because I've been in the field for almost 15 years. I started working as a valet attendant at the age of 18 and I've seen many issues when it comes to retrieving a vehicle. I think this web application will facilitate customer's needs at the time of departure. For example,  in a restaurant during winter, I've seen many people wait outside in the cold waiting for their car to be retrieved. At peak hours, waiting time can be as long as 15 minutes. With this web application, a customer can request a vehicle retrieval whenever they are ready to leave and recieve a confirmation that their vehicle is ready. For employers, this web application will have graphs and data that can be useful in the long-run. 
+
+# Server-Side Components:
+Employees will need to input vehicle's information and submit the data. That data will be stored in a database for employers to retrieve and analyze. Also, there will a database for vehicle owners for visited places.        
