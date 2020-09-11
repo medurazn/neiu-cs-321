@@ -1,0 +1,35 @@
+body {
+    background-color: aliceblue;
+}
+
+#title {
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.grid {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.vehicle-group {
+    width: 100px;
+    width: 20%;
+}
+
+.gridText {
+    width: 100%;
+    display: block;
+    flex-direction: row;
+    justify-content: center;
+}
+.vehicle-input {
+    width: 100px;
+}
