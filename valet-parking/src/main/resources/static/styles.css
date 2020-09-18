@@ -14,8 +14,8 @@ img {
 }
 
 .grid {
-    width: 100%;
-    display: flex;
+    width: 50px;
+    display: contents;
     flex-direction: row;
     justify-content: center;
 }
@@ -30,6 +30,8 @@ img {
     flex-direction: row;
     justify-content: center;
 }
-.vehicle-input {
-    width: 100px;
+
+.validationError{
+    color: firebrick;
 }
+
