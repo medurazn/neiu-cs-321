@@ -5,11 +5,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Valet Parking</title>
-    <link rel="stylesheet", th:href="@{styles.css}"/>
+<!--    <link rel="stylesheet", th:href="@{styles.css}"/>-->
+
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <h1 id="title">VALPAL</h1>
     <img th:src="@{images/lambo.jpg}"/>
-    <h3>Thank you for your submission</h3>
+    <h1>Thank you for your submission</h1>
 </body>
 </html>
