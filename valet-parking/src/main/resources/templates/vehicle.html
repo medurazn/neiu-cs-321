@@ -11,141 +11,41 @@
 <h1 id="title">Log Vehicle Information!!</h1>
 <img th:src="@{images/lambo.jpg}"/>
 
-    <form method="post" th:object="${savedVehicle}">
-        <span class="validationError"
-            th:if="${#fields.hasErrors('vehicles')}"
-            th:errors="*{vehicles}">Vehicle Error</span>
+    <form method="post" th:object="${vehicle}">
+
         <div class="grid">
-            <div class="vehicle-group" id="chevys">
-                <h3>CHEVY:</h3>
-                <div th:each="vehicle : ${chevy}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="toyotas">
-                <h3>TOYOTA:</h3>
-                <div th:each="vehicle : ${toyota}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="fords">
-                <h3>FORD:</h3>
-                <div th:each="vehicle : ${ford}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="nissans">
-                <h3>NISSAN:</h3>
-                <div th:each="vehicle : ${nissan}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="teslas">
-                <h3>TESLA:</h3>
-                <div th:each="vehicle : ${tesla}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="vws">
-                <h3>VOLKSWAGEN:</h3>
-                <div th:each="vehicle : ${vw}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="hondas">
-                <h3>HONDA:</h3>
-                <div th:each="vehicle : ${honda}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="dodges">
-                <h3>DODGE:</h3>
-                <div th:each="vehicle : ${dodge}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="lambos">
-                <h3>LAMBORGHINI:</h3>
-                <div th:each="vehicle : ${lamborghini}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="ferraris">
-                <h3>FERRARI:</h3>
-                <div th:each="vehicle : ${ferrari}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="hyundais">
-                <h3>HYUNDAI:</h3>
-                <div th:each="vehicle : ${hyundai}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="jeeps">
-                <h3>JEEP:</h3>
-                <div th:each="vehicle : ${jeep}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="acuras">
-                <h3>ACURA:</h3>
-                <div th:each="vehicle : ${acura}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="rovers">
-                <h3>RANGE ROVER:</h3>
-                <div th:each="vehicle : ${rover}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="chryslers">
-                <h3>CHRYSLER:</h3>
-                <div th:each="vehicle : ${chrysler}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
-            </div>
-
-            <div class="vehicle-group" id="maseratis">
-                <h3>MASERATI:</h3>
-                <div th:each="vehicle : ${maserati}">
-                    <input name="vehicles" type="checkbox" th:value="${vehicle.type}"/>
-                    <span th:text="${vehicle.model}">VEHICLE</span><br/>
-                </div>
+            <h3>Select vehicle type:</h3>
+            <div th:each="category: ${categories}">
+                <input type="radio" th:field="*{category}" th:value="${category.id}"/>
+                <label th:text="${category.type}">CATEGORY</label>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('category')}"
+                      th:errors="*{category}">Category Error</span>
             </div>
         </div>
 
         <div class="gridText">
+
+            <div class="vehicle-input" id="make">
+                <h3>Make:</h3>
+                <div>
+                    <input type="text" th:field="*{make}"/>
+                    <span class="validationError"
+                          th:if="${#fields.hasErrors('make')}"
+                          th:errors="*{make}">Make Error</span>
+                </div>
+            </div>
+
+            <div class="vehicle-input" id="model">
+                <h3>Model:</h3>
+                <div>
+                    <input type="text" th:field="*{model}"/>
+                    <span class="validationError"
+                          th:if="${#fields.hasErrors('model')}"
+                          th:errors="*{model}">Model Error</span>
+                </div>
+            </div>
+
             <div class="vehicle-input" id="color">
                 <h3>Color:</h3>
                 <div>
@@ -200,14 +100,7 @@
         </div>
 
         <div>
-            <h3>Name this vehicle:</h3>
-            <input type="text" th:field="*{name}"/>
-            <span class="validationError"
-                th:if="${#fields.hasErrors('name')}"
-                th:errors="*{name}">Name Error</span>
-            <br/><br/>
             <button>Submit vehicle</button>
-
         </div>
     </form>
 </body>

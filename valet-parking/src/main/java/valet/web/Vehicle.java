@@ -2,7 +2,7 @@ package valet.web;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
-import valet.VehicleInfo;
+import valet.VehicleCategory;
 
 import javax.validation.constraints.*;
 import javax.websocket.OnMessage;
@@ -11,9 +11,13 @@ import java.util.List;
 @Data
 public class Vehicle {
 
-    @NotNull(message="The name is required")
-    @Size(min = 5, message = "Name must be at least 5 characters long.")
-    private String name;
+    @NotNull(message="The make is required")
+    @Size(min = 3, message = "Make must be at least 3 characters long.")
+    private String make;
+
+    @NotNull(message="The model is required")
+    @Size(min = 3, message = "Model must be at least 3 characters long.")
+    private String model;
 
     @NotNull(message="The color is required")
     @Size(min = 3, message = "Color must be at least 3 characters long.")
@@ -28,7 +32,7 @@ public class Vehicle {
     private String ticket;
 
     @NotNull(message="The location is required")
-    @Size(min = 1, message = "Location must be at least 5 characters long.")
+    @Size(min = 2, message = "Location must be at least 2 characters long.")
     private String location;
 
     @NotNull(message="The plate is required")
@@ -36,6 +40,5 @@ public class Vehicle {
     private String plate;
 
     @NotEmpty(message="You must choose at least one model")
-    private List<String> vehicles;
-
+    private String category;
 }
