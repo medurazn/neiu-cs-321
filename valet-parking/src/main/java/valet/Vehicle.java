@@ -1,4 +1,4 @@
-package valet.web;
+package valet;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
