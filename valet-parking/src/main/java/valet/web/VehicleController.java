@@ -1,5 +1,7 @@
 package valet.web;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -10,14 +12,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import valet.Vehicle;
 import valet.VehicleCategory.Type;
 import valet.VehicleCategory;
+import valet.data.VehicleCategoryRepository;
+import valet.data.VehicleRepository;
 
 import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
+@Slf4j
 @Controller
 @RequestMapping("/vehicle")
 public class VehicleController {
+
+    private final VehicleCategoryRepository categoryRepo;
+    private final VehicleRepository vehicleRepo;
+
+    @Autowired
+    public VehicleController(VehicleCategoryRepository categoryRepo, VehicleRepository vehicleRepo) {
+        this.categoryRepo = categoryRepo;
+        this.vehicleRepo = vehicleRepo;
+    }
 
     @GetMapping
     public String showVehicleForm() {
@@ -27,30 +41,25 @@ public class VehicleController {
 
     @PostMapping
     public String processVehicle(@Valid @ModelAttribute("vehicle") Vehicle vehicle, Errors errors) {
-        if(errors.hasErrors()){
+        if(errors.hasErrors())
             return "vehicle";
-        }
 
+
+        Vehicle savedVehicle = vehicleRepo.save(vehicle);
+        log.info("Processing..." + vehicle);
         return "redirect:/vehicles/current";
     }
 
     @ModelAttribute
     public void addAttributes(Model model) {
-        List<VehicleCategory> categories = createVehicleCategoryList();
+        List<VehicleCategory> categories = categoryRepo.findAll();
         model.addAttribute("categories", categories);
-        model.addAttribute("vehicle", new Vehicle());
+//        model.addAttribute("vehicle", new Vehicle());
     }
 
-    private List<VehicleCategory> createVehicleCategoryList() {
-        List<VehicleCategory> categories = Arrays.asList(
-                new VehicleCategory("SDN", Type.SEDAN),
-                new VehicleCategory("CPE", Type.COUPE),
-                new VehicleCategory("TRK", Type.TRUCK),
-                new VehicleCategory("HTK", Type.HATCHBACK),
-                new VehicleCategory("SPT", Type.SPORT),
-                new VehicleCategory("CVT", Type.CONVERTIBLE)
-
-        );
-        return categories;
+    @ModelAttribute(name = "vehicle")
+    public Vehicle addVehicleToModel() {
+        return new Vehicle();
     }
+
 }

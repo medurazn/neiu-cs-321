@@ -6,10 +6,14 @@ import valet.VehicleCategory;
 
 import javax.validation.constraints.*;
 import javax.websocket.OnMessage;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
 public class Vehicle {
+
+    private Long id;
+    private LocalDateTime createdAt;
 
     @NotNull(message="The make is required")
     @Size(min = 3, message = "Make must be at least 3 characters long.")
