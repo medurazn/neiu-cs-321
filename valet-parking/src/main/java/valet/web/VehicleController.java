@@ -46,7 +46,7 @@ public class VehicleController {
 
 
         Vehicle savedVehicle = vehicleRepo.save(vehicle);
-        log.info("Processing..." + vehicle);
+//        log.info("Processing..." + vehicle);
         return "redirect:/vehicles/current";
     }
 

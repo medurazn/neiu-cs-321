@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 import java.sql.Types;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 @Repository
 public class JdbcVehicleRepository implements VehicleRepository{
@@ -22,6 +23,11 @@ public class JdbcVehicleRepository implements VehicleRepository{
     @Autowired
     public JdbcVehicleRepository(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
+    }
+
+    @Override
+    public List<Vehicle> findAll() {
+        return null;
     }
 
     @Override
