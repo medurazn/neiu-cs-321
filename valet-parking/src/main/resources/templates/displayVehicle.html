@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Vehicle Data</title>
+    <link rel="stylesheet", th:href="@{styles.css}"/>
+</head>
+<body>
+<h1 id="title">Display Saved Vehicle</h1>
+<img th:src="@{images/lambo.jpg}"/>
+
+    <div th:each="Vehicle: ${vehicles}">
+
+        <h3 th:text="'Make: ' + ${Vehicle.make}"></h3>
+        <h3 th:text="'Model: ' + ${Vehicle.model}"></h3>
+        <h3 th:text="'Color: ' + ${Vehicle.color}"></h3>
+        <h3 th:text="'Year: ' + ${Vehicle.year}"></h3>
+        <h3 th:text="'Ticket: ' + ${Vehicle.ticket}"></h3>
+        <h3 th:text="'Location: ' + ${Vehicle.location}"></h3>
+        <h3 th:text="'Plate Number: ' + ${Vehicle.plate}"></h3>
+        <h3 th:text="'Created at: ' + ${Vehicle.createdAt}"></h3>
+
+    </div>
+
+</body>
+</html>

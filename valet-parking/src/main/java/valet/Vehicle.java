@@ -4,14 +4,18 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Range;
 import valet.VehicleCategory;
 
+import javax.persistence.*;
 import javax.validation.constraints.*;
 import javax.websocket.OnMessage;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@Entity
 public class Vehicle {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private LocalDateTime createdAt;
 
@@ -43,6 +47,12 @@ public class Vehicle {
     @Size(min = 1, max = 8, message = "Plate number must be at least 1 character and 8 characters max")
     private String plate;
 
-    @NotEmpty(message="You must choose at least one model")
-    private String category;
+    @ManyToOne(targetEntity = VehicleCategory.class)
+    @NotNull(message="You must choose at least one model")
+    private VehicleCategory category;
+
+    @PrePersist
+    void createdAt() {
+        this.createdAt = LocalDateTime.now();
+    }
 }

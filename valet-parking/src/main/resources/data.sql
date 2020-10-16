@@ -1,16 +1,14 @@
-delete from Vehicle_Categories;
 delete from Vehicle;
-
-delete from VehicleCategory;
-insert into VehicleCategory(id, type)
+delete from Vehicle_Category;
+insert into Vehicle_Category(id, type)
 values('SDN', 'SEDAN');
-insert into VehicleCategory(id, type)
+insert into Vehicle_Category(id, type)
 values('CPE', 'COUPE');
-insert into VehicleCategory(id, type)
+insert into Vehicle_Category(id, type)
 values('TRK', 'TRUCK');
-insert into VehicleCategory(id, type)
+insert into Vehicle_Category(id, type)
 values('HTK', 'HATCHBACK');
-insert into VehicleCategory(id, type)
+insert into Vehicle_Category(id, type)
 values('SPT', 'SPORT');
-insert into VehicleCategory(id, type)
+insert into Vehicle_Category(id, type)
 values('CVT', 'CONVERTIBLE');

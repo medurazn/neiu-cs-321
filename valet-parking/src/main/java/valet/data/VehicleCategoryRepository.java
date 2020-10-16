@@ -1,14 +1,8 @@
 package valet.data;
 
+import org.springframework.data.repository.CrudRepository;
 import valet.VehicleCategory;
 
-import java.util.List;
+public interface VehicleCategoryRepository  extends CrudRepository<VehicleCategory, String> {
 
-public interface VehicleCategoryRepository {
-
-    List<VehicleCategory> findAll();
-
-    VehicleCategory findOne(String id);
-
-    VehicleCategory save(VehicleCategory category);
 }

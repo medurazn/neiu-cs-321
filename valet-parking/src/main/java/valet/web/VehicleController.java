@@ -46,15 +46,14 @@ public class VehicleController {
 
 
         Vehicle savedVehicle = vehicleRepo.save(vehicle);
-//        log.info("Processing..." + vehicle);
+        log.info("Processing..." + vehicle);
         return "redirect:/vehicles/current";
     }
 
     @ModelAttribute
     public void addAttributes(Model model) {
-        List<VehicleCategory> categories = categoryRepo.findAll();
+        List<VehicleCategory> categories = (List<VehicleCategory>) categoryRepo.findAll();
         model.addAttribute("categories", categories);
-//        model.addAttribute("vehicle", new Vehicle());
     }
 
     @ModelAttribute(name = "vehicle")
