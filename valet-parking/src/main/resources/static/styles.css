@@ -35,3 +35,13 @@ img {
     color: firebrick;
 }
 
+.box {
+
+    background-color: darkolivegreen;
+    width: 300px;
+    border: 15px deepskyblue;
+    padding: 50px;
+    margin: 20px;
+
+}
+

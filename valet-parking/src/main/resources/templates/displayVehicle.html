@@ -11,7 +11,8 @@
 <h1 id="title">Display Saved Vehicle</h1>
 <img th:src="@{images/lambo.jpg}"/>
 
-    <div th:each="Vehicle: ${vehicles}">
+    <div class="box" style="margin-left: auto;
+        margin-right: auto; width: 50%;" th:each="Vehicle: ${vehicles}">
 
         <h3 th:text="'Make: ' + ${Vehicle.make}"></h3>
         <h3 th:text="'Model: ' + ${Vehicle.model}"></h3>
