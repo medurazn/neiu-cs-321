@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Valet Parking</title>
-    <link rel="stylesheet", th:href="@{styles.css}"/>
+    <link rel="stylesheet", th:href="@{/styles.css}"/>
 </head>
 <body>
 <h1 id="title">Log Vehicle Information!!</h1>
@@ -92,15 +92,14 @@
                     <input type="text" th:field="*{plate}"/>
                     <span class="validationError"
                           th:if="${#fields.hasErrors('plate')}"
-                          th:errors="*{plate}">Plate Error</span>
-                    <br/>
+                          th:errors="*{plate}">Plate Error</span><br/><br/>
                 </div>
             </div>
 
         </div>
 
         <div>
-            <button>Submit vehicle</button>
+            <button>Submit vehicle</button><br/><br/>
         </div>
     </form>
 </body>

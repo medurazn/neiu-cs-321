@@ -6,15 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import valet.Vehicle;
-import valet.VehicleCategory;
-import valet.data.VehicleCategoryRepository;
 import valet.data.VehicleRepository;
 
 import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("/displayVehicle")
+@RequestMapping("/display_vehicle")
 public class DisplayVehicleController {
 
     private final VehicleRepository vehicleRepo;
@@ -26,7 +24,7 @@ public class DisplayVehicleController {
     @GetMapping
     public String displayVehicle() {
 
-        return "displayVehicle";
+        return "display_vehicle";
     }
 
     @ModelAttribute("vehicles")

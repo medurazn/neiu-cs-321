@@ -26,4 +26,5 @@ public class UserRepositoryUserDetailsService implements UserDetailsService {
             return user;
         throw new UsernameNotFoundException("User" + username + " not found");
     }
+
 }

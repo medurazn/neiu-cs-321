@@ -1,16 +1,15 @@
 body {
     background-color: aliceblue;
+    max-width: max-content;
+    margin: auto;
 }
 
-#title {
+h1 {
     text-align: center;
 }
 
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+nav {
+    text-align: center;
 }
 
 .grid {
@@ -35,13 +34,13 @@ img {
     color: firebrick;
 }
 
-.box {
+/*.box {*/
 
-    background-color: darkolivegreen;
-    width: 300px;
-    border: 15px deepskyblue;
-    padding: 50px;
-    margin: 20px;
+/*    background-color: darkolivegreen;*/
+/*    width: 300px;*/
+/*    border: 15px deepskyblue;*/
+/*    padding: 50px;*/
+/*    margin: 20px;*/
 
-}
+/*}*/
 

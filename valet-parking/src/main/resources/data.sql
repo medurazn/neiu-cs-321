@@ -1,5 +1,7 @@
 delete from Vehicle;
 delete from Vehicle_Category;
+-- delete from User;
+
 insert into Vehicle_Category(id, type)
 values('SDN', 'SEDAN');
 insert into Vehicle_Category(id, type)

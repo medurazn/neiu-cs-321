@@ -10,7 +10,7 @@ public class VehicleSavedController {
 
     @GetMapping("/current")
     public String savedVehicles(){
-        return "vehicleForm";
+        return "vehicle_form";
     }
 
 }

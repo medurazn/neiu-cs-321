@@ -1,27 +1,17 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Valet Parking</title>
-    <style>
-        h1 {
-            text-align: center;
-            font-size: 50px;
-            color: coral;
-        }
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
 
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 50%;
-        }
-    </style>
 </head>
 <body>
-<h1>Welcome to ValPal....</h1>
-<img th:src="@{/images/valetHome.jpg}"/>
+    <h1>Welcome to ValPal....</h1>
+    <img th:src="@{/images/valetHome.jpg}"/>
+
+    <p class="nav"><a th:href="@{/login}">Login</a> | <a th:href="@{/register}">Register</a></p>
 </body>
 </html>
