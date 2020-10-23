@@ -2,6 +2,7 @@ package valet.web;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -44,7 +45,12 @@ public class VehicleController {
         if(errors.hasErrors())
             return "vehicle";
 
-
+        try {
+            Vehicle savedVehicle = vehicleRepo.save(vehicle);
+        }catch (DataIntegrityViolationException e) {
+            errors.rejectValue("ticket", "invalidTicket", "Ticket not available. Please choose another ticket.");
+            return "/vehicle";
+        }
         Vehicle savedVehicle = vehicleRepo.save(vehicle);
         log.info("Processing..." + vehicle);
         return "redirect:/vehicles/current";

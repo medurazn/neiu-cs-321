@@ -8,4 +8,7 @@ import java.util.List;
 public interface VehicleRepository  extends CrudRepository<Vehicle, Long> {
 
     List<Vehicle> findAll();
+
+    Vehicle findByTicket(String ticket);
+
 }

@@ -35,6 +35,7 @@ public class Vehicle {
     @NotNull(message="The year is required ####")
     private Integer year;
 
+    @Column(unique = true)
     @NotNull(message="The ticket is required")
     @Size(min = 7, message = "The Ticket must be at least 7 characters long with the format 123-456")
     private String ticket;
