@@ -11,7 +11,7 @@
     <h1 id="title">Vehicles Saved</h1>
     <img th:src="@{images/lambo.jpg}"/>
 
-    <div class="box" style="background-color: beige;" th:each="Vehicle: ${vehicles}">
+    <div class="box" style="background-color: #f5f5dc;" th:each="Vehicle: ${vehicles}">
 
         <h3 th:text="'Type: ' + ${Vehicle.category.type}"></h3>
         <h3 th:text="'Make: ' + ${Vehicle.make}"></h3>
