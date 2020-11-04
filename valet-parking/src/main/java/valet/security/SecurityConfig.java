@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2-console/**")
                 .permitAll()
             .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/vehicle")
+                .formLogin().loginPage("/login").defaultSuccessUrl("/display_vehicle")
             .and()
                 .logout().logoutSuccessUrl("/");
 

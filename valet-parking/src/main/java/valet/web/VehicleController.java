@@ -37,7 +37,7 @@ public class VehicleController {
     @GetMapping
     public String showVehicleForm() {
 
-        return "display_vehicle";
+        return "vehicle";
     }
 
     @PostMapping

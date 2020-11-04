@@ -11,7 +11,15 @@
 <body>
     <h1 id="title">VALPAL</h1>
     <img th:src="@{/images/lambo.jpg}"/>
-    <h1>Thank you for your submission</h1>
+
+    <h3>Thank you for your submission</h3>
     <a th:href="@{/vehicle}" id="another"><h2>Log another vehicle</h2></a><br/>
+
+    <nav>
+        <form method="post" th:action="@{/logout}">
+            <button type="submit">Logout</button>
+        </form>
+    </nav>
+
 </body>
 </html>
