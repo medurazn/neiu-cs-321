@@ -17,5 +17,9 @@ spring:
     password:
     driver: org.h2.Driver
 
-server:
-  port: 9090
+#server:
+#  port: 9090
+
+valet:
+  vehicles:
+    pageSize: 5

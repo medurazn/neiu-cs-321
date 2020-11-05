@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "valet.vehicles.pageSize",
+      "type": "java.lang.Integer",
+      "description": "Sets the maximum number of vehicles to display in a list."
+  }
+] }

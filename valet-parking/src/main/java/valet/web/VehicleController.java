@@ -3,6 +3,8 @@ package valet.web;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import valet.User;
 import valet.Vehicle;
 import valet.VehicleCategory.Type;
 import valet.VehicleCategory;
@@ -34,6 +37,7 @@ public class VehicleController {
         this.vehicleRepo = vehicleRepo;
     }
 
+
     @GetMapping
     public String showVehicleForm() {
 
@@ -41,7 +45,8 @@ public class VehicleController {
     }
 
     @PostMapping
-    public String processVehicle(@Valid @ModelAttribute("vehicle") Vehicle vehicle, Errors errors) {
+    public String processVehicle(@Valid @ModelAttribute("vehicle") Vehicle vehicle, Errors errors,
+                                 @AuthenticationPrincipal User user) {
         if(errors.hasErrors())
             return "vehicle";
 
@@ -51,6 +56,7 @@ public class VehicleController {
             errors.rejectValue("ticket", "invalidTicket", "Ticket not available. Please choose another ticket.");
             return "/vehicle";
         }
+        vehicle.setUser(user);
         Vehicle savedVehicle = vehicleRepo.save(vehicle);
         log.info("Processing..." + vehicle);
         return "redirect:/vehicles/current";

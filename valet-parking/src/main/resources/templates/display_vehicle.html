@@ -8,8 +8,10 @@
     <link rel="stylesheet", th:href="@{/styles.css}"/>
 </head>
 <body>
+    <h1>Hi, Mario Durazno</h1>
     <h1 id="title">Vehicles Saved</h1>
     <img th:src="@{images/lambo.jpg}"/>
+    <a th:href="@{/vehicle}" id="another"><h2>Log another vehicle</h2></a><br/>
 
     <nav>
         <form method="post" th:action="@{/logout}">

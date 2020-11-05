@@ -10,12 +10,11 @@
 <body>
 <h1 id="title">Log Vehicle Information!!</h1>
 <img th:src="@{images/lambo.jpg}"/>
+<p>Click <a th:href="@{/display_vehicle}">here</a> to view vehicles saved.</p>
 
-    <nav class="logoutButton">
-        <form method="post" th:action="@{/logout}">
-            <button type="submit">Logout</button>
-        </form>
-    </nav>
+    <form method="post" th:action="@{/logout}">
+        <button type="submit">Logout</button>
+    </form>
 
     <form method="post" th:object="${vehicle}">
 

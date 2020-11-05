@@ -52,6 +52,9 @@ public class Vehicle {
     @NotNull(message="You must choose at least one model")
     private VehicleCategory category;
 
+    @ManyToOne
+    private User user;
+
     @PrePersist
     void createdAt() {
         this.createdAt = LocalDateTime.now();
