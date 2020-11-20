@@ -5,33 +5,86 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Display Vehicle Data</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}">
     <link rel="stylesheet", th:href="@{/styles.css}"/>
+
+
 </head>
 <body>
-    <h1>Hi, Mario Durazno</h1>
-    <h1 id="title">Vehicles Saved</h1>
-    <img th:src="@{images/lambo.jpg}"/>
-    <a th:href="@{/vehicle}" id="another"><h2>Log another vehicle</h2></a><br/>
 
-    <nav>
-        <form method="post" th:action="@{/logout}">
-            <button type="submit">Logout</button>
-        </form>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <span class="navbar-brand">VALPAL</span>
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse"
+                data-target="#navbarSuppertedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/login' ? 'active' : ''}"
+                    th:if="${#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/register' ? 'active' : ''}"
+                    th:if="${#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/register}">Register</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/vehicle' ? 'active' : ''}"
+                    th:if="${!#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/vehicle}">Log Vehicle</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/display_vehicle' ? 'active' : ''}"
+                    th:if="${!#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/display_vehicle}">View Vehicles</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/logout' ? 'active' : ''}"
+                    th:if="${!#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <div class="box" style="background-color: #f5f5dc;" th:each="Vehicle: ${vehicles}">
+    <div class="container-fluid mt-5">
 
-        <h3 th:text="'Type: ' + ${Vehicle.category.type}"></h3>
-        <h3 th:text="'Make: ' + ${Vehicle.make}"></h3>
-        <h3 th:text="'Model: ' + ${Vehicle.model}"></h3>
-        <h3 th:text="'Color: ' + ${Vehicle.color}"></h3>
-        <h3 th:text="'Year: ' + ${Vehicle.year}"></h3>
-        <h3 th:text="'Ticket: ' + ${Vehicle.ticket}"></h3>
-        <h3 th:text="'Location: ' + ${Vehicle.location}"></h3>
-        <h3 th:text="'Plate Number: ' + ${Vehicle.plate}"></h3>
-        <h3 th:text="'Created at: ' + ${Vehicle.createdAt}"></h3>
+        <div class="row justify-content-center">
+            <h1 class="col-12 text-center" th:text="${'Hi, ' + username}">Hi</h1>
+        </div>
+
+        <div class="row justify-content-center">
+            <h1 class="col-12 text-center">Vehicles Saved</h1>
+        </div>
+
+        <div class="row justify-content-center mt-2 mb-2">
+            <img th:src="@{images/lambo.jpg}"/>
+        </div>
+
+        <div class="text-center">
+            <div class="box" th:each="Vehicle: ${vehicles}">
+                <h3 th:text="'Type: ' + ${Vehicle.category.type}"></h3>
+                <h3 th:text="'Make: ' + ${Vehicle.make}"></h3>
+                <h3 th:text="'Model: ' + ${Vehicle.model}"></h3>
+                <h3 th:text="'Color: ' + ${Vehicle.color}"></h3>
+                <h3 th:text="'Year: ' + ${Vehicle.year}"></h3>
+                <h3 th:text="'Ticket: ' + ${Vehicle.ticket}"></h3>
+                <h3 th:text="'Location: ' + ${Vehicle.location}"></h3>
+                <h3 th:text="'Plate Number: ' + ${Vehicle.plate}"></h3>
+                <h3 th:text="'Created at: ' + ${Vehicle.createdAt}"></h3>
+            </div>
+        </div>
 
     </div>
+
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"> </script>
+    <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"> </script>
+    <script th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.min.js}"> </script>
+
 
 </body>
 </html>

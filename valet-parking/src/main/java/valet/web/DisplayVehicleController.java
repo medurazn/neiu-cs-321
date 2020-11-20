@@ -38,9 +38,10 @@ public class DisplayVehicleController {
 
     @ModelAttribute("vehicles")
     public List<Vehicle> vehicles(Model model, @AuthenticationPrincipal User user) {
+        String username = user.getUsername();
 
         Pageable pageable = (Pageable) PageRequest.of(0, props.getPageSize());
-
+        model.addAttribute("username", username);
         return vehicleRepo.findAllByUser(user, pageable);
     }
 

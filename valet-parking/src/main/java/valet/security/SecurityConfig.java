@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/display_vehicle", "/vehicle")
+                .antMatchers("/display_vehicle/**", "/vehicle/**", "/vehicles/**")
                 .hasRole("USER")
                 .and()
             .authorizeRequests()
