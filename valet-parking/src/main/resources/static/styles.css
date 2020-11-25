@@ -19,12 +19,6 @@ body {
     margin-bottom: 20px;
 }
 
-.grid {
-    width: 50px;
-    display: contents;
-    flex-direction: row;
-    justify-content: center;
-}
 .vehicle-group {
     width: 100px;
     width: 20%;

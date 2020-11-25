@@ -32,12 +32,12 @@ public class Vehicle {
     private String color;
 
     @Min(value = 4, message = "Needs to be 4 characters long")
-    @NotNull(message="The year is required ####")
+    @NotNull(message="The year is required XXXX")
     private Integer year;
 
     @Column(unique = true)
     @NotNull(message="The ticket is required")
-    @Size(min = 7, message = "The Ticket must be at least 7 characters long with the format 123-456")
+    @Size(min = 7, message = "The Ticket must be at least 8 characters long with the format XXX-XXXX")
     private String ticket;
 
     @NotNull(message="The location is required")
