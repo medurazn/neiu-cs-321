@@ -14,12 +14,15 @@
 
     <div th:replace="fragments/base :: bodyImage"></div>
 
+    <div class="row form-group justify-content-center">
     <form class="container-fluid" method="post" th:object="${vehicle}">
         <div class="row justify-content-center">
-            <label class="col-form-label text-right font-weight-bold">Select Vehicle Type: </label>
-            <div th:each="category: ${categories}">
-                <label th:text="${category.type}">CATEGORY</label>
-                <input type="radio" th:field="*{category}" th:value="${category.id}"/>
+            <div class="justify-content-center mt-3 col-md-3">
+                <label class="col-form-label text-center font-weight-bold">Select Vehicle Type: </label>
+                <div th:each="category: ${categories}">
+                    <label th:text="${category.type}">CATEGORY</label>
+                    <input type="radio" th:field="*{category}" th:value="${category.id}"/>
+                </div>
             </div>
         </div>
         <div class="row form-group justify-content-center">
@@ -104,6 +107,7 @@
         </div>
 
     </form>
+    </div>
 
     <div th:replace="fragments/base :: script"></div>
 
