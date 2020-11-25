@@ -17,12 +17,8 @@ spring:
     password:
     driver: org.h2.Driver
 
-server:
-  port: 8080
-  error:
-    whitelabel:
-      enabled: false
-    path: /error
+#server:
+#  port: 9090
 
 valet:
   vehicles:
