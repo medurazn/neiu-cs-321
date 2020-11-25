@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head th:insert="fragments/base :: contentHead"></head>
+
+<body>
+    <nav th:insert="fragments/base :: navigation"></nav>
+
+    <div th:replace="fragments/base :: errorTitleAndImage"></div>
+
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <h2>Oops!! Something went wrong!!</h2>
+        </div>
+    </div>
+
+    <div th:replace="fragments/base :: script"></div>
+</body>
+</html>
