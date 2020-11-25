@@ -2,110 +2,163 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Valet Parking</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}">
+    <link rel="stylesheet", th:href="@{/styles.css}"/>
 
-<head th:insert="fragments/base :: contentHead"></head>
-
+</head>
 <body>
-    <nav th:insert="fragments/base :: navigation"></nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <span class="navbar-brand">VALPAL</span>
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse"
+                data-target="#navbarSuppertedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/login' ? 'active' : ''}"
+                    th:if="${#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/register' ? 'active' : ''}"
+                    th:if="${#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/register}">Register</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/vehicle' ? 'active' : ''}"
+                    th:if="${!#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/vehicle}">Log Vehicle</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/display_vehicle' ? 'active' : ''}"
+                    th:if="${!#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/display_vehicle}">View Vehicles</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/logout' ? 'active' : ''}"
+                    th:if="${!#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="row justify-content-center">
-        <h1 class="col-12 text-center mt-5">Log Vehicle Information</h1>
+    <div class="container-fluid mt-5">
+
+        <div class="row justify-content-center">
+            <h1 id="title">Log Vehicle Information!!</h1>
+        </div>
+
+        <div class="row justify-content-center mt-2 mb-2">
+            <img th:src="@{images/lambo.jpg}"/>
+        </div>
+
+        <div class="row justify-content-center">
+            <form method="post" th:object="${vehicle}">
+
+                <div class="grid">
+                    <h3>Select vehicle type:</h3>
+                    <div th:each="category: ${categories}">
+                        <input type="radio" th:field="*{category}" th:value="${category.id}"/>
+                        <label th:text="${category.type}">CATEGORY</label>
+                        <span class="validationError"
+                              th:if="${#fields.hasErrors('category')}"
+                              th:errors="*{category}">Category Error</span>
+                    </div>
+                </div>
+
+                <div class="gridText">
+
+                    <div class="vehicle-input" id="make">
+                        <h3>Make:</h3>
+                        <div>
+                            <input type="text" th:field="*{make}"/>
+                            <span class="validationError"
+                                  th:if="${#fields.hasErrors('make')}"
+                                  th:errors="*{make}">Make Error</span>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-input" id="model">
+                        <h3>Model:</h3>
+                        <div>
+                            <input type="text" th:field="*{model}"/>
+                            <span class="validationError"
+                                  th:if="${#fields.hasErrors('model')}"
+                                  th:errors="*{model}">Model Error</span>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-input" id="color">
+                        <h3>Color:</h3>
+                        <div>
+                            <input type="text" th:field="*{color}"/>
+                            <span class="validationError"
+                                  th:if="${#fields.hasErrors('color')}"
+                                  th:errors="*{color}">Color Error</span>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-input" id="year">
+                        <h3>Year:</h3>
+                        <div>
+                            <input type="text" th:field="*{year}"/>
+                            <span class="validationError"
+                                  th:if="${#fields.hasErrors('year')}"
+                                  th:errors="*{year}">Year Error</span>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-input" id="ticket">
+                        <h3>Ticket Number:</h3>
+                        <div>
+                            <input type="text" th:field="*{ticket}"/>
+                            <span class="validationError"
+                                  th:if="${#fields.hasErrors('ticket')}"
+                                  th:errors="*{ticket}">Ticket Error</span>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-input" id="location">
+                        <h3>Location:</h3>
+                        <div>
+                            <input type="text" th:field="*{location}"/>
+                            <span class="validationError"
+                                  th:if="${#fields.hasErrors('location')}"
+                                  th:errors="*{location}">Location Error</span>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-input" id="plate">
+                        <h3>Plate Number:</h3>
+                        <div>
+                            <input type="text" th:field="*{plate}"/>
+                            <span class="validationError"
+                                  th:if="${#fields.hasErrors('plate')}"
+                                  th:errors="*{plate}">Plate Error</span><br/><br/>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+                    <button>Submit vehicle</button><br/><br/>
+                </div>
+
+            </form>
+        </div>
+
     </div>
 
-    <div th:replace="fragments/base :: bodyImage"></div>
-
-    <form class="container-fluid" method="post" th:object="${vehicle}">
-        <div class="row justify-content-center">
-            <label class="col-form-label text-right font-weight-bold">Select Vehicle Type: </label>
-            <div th:each="category: ${categories}">
-                <label th:text="${category.type}">CATEGORY</label>
-                <input type="radio" th:field="*{category}" th:value="${category.id}"/>
-            </div>
-        </div>
-        <div class="row form-group justify-content-center">
-            <span class="form-control-sm col-5 col-md-3 validationError"
-                  th:if="${#fields.hasErrors('category')}"
-                  th:errors="*{category}">Category Error</span>
-        </div>
-
-        <div class="row form-group justify-content-center">
-            <label class="col-form-label col-1 text-right font-weight-bold" for="make">Make: </label>
-            <input class="form-control col-5 col-md-2" type="text" th:field="*{make}" id="make"/>
-        </div>
-        <div class="row form-group justify-content-center">
-            <span class="form-control-sm col-5 col-md-3 validationError"
-                  th:if="${#fields.hasErrors('make')}"
-                  th:errors="*{make}">Make Error</span>
-        </div>
-
-        <div class="row form-group justify-content-center">
-            <label class="col-form-label col-1 text-right font-weight-bold" for="model">Model: </label>
-            <input class="form-control col-5 col-md-2" type="text" th:field="*{model}" id="model"/>
-        </div>
-        <div class="row form-group justify-content-center">
-            <span class="form-control-sm col-5 col-md-3 validationError"
-                  th:if="${#fields.hasErrors('model')}"
-                  th:errors="*{model}">Model Error</span>
-        </div>
-
-        <div class="row form-group justify-content-center">
-            <label class="col-form-label col-1 text-right font-weight-bold" for="color">Color: </label>
-            <input class="form-control col-5 col-md-2" type="text" th:field="*{color}" id="color"/>
-        </div>
-        <div class="row form-group justify-content-center">
-            <span class="form-control-sm col-5 col-md-3 validationError"
-                  th:if="${#fields.hasErrors('color')}"
-                  th:errors="*{color}">Color Error</span>
-        </div>
-
-        <div class="row form-group justify-content-center">
-            <label class="col-form-label col-1 text-right font-weight-bold" for="year">Year: </label>
-            <input class="form-control col-5 col-md-2" type="text" th:field="*{year}" id="year"/>
-        </div>
-        <div class="row form-group justify-content-center">
-            <span class="form-control-sm col-5 col-md-3 validationError"
-                  th:if="${#fields.hasErrors('year')}"
-                  th:errors="*{year}">Year Error</span>
-        </div>
-
-        <div class="row form-group justify-content-center">
-            <label class="col-form-label col-1 text-right font-weight-bold" for="ticket">Ticket: </label>
-            <input class="form-control col-5 col-md-2" type="text" th:field="*{ticket}" id="ticket"/>
-        </div>
-        <div class="row form-group justify-content-center">
-            <span class="form-control-sm col-5 col-md-3 validationError"
-                  th:if="${#fields.hasErrors('ticket')}"
-                  th:errors="*{ticket}">Ticket Error</span>
-        </div>
-
-        <div class="row form-group justify-content-center">
-            <label class="col-form-label col-1 text-right font-weight-bold" for="location">Location: </label>
-            <input class="form-control col-5 col-md-2" type="text" th:field="*{location}" id="location"/>
-        </div>
-        <div class="row form-group justify-content-center">
-            <span class="form-control-sm col-5 col-md-3 validationError"
-                  th:if="${#fields.hasErrors('location')}"
-                  th:errors="*{location}">Location Error</span>
-        </div>
-
-        <div class="row form-group justify-content-center">
-            <label class="col-form-label col-1 text-right font-weight-bold" for="plate">Plate: </label>
-            <input class="form-control col-5 col-md-2" type="text" th:field="*{plate}" id="plate"/>
-        </div>
-        <div class="row form-group justify-content-center">
-            <span class="form-control-sm col-5 col-md-3 validationError"
-                  th:if="${#fields.hasErrors('plate')}"
-                  th:errors="*{plate}">Plate Error</span>
-        </div>
-
-        <div class="row form-group justify-content-center">
-            <span class="col-6 col-md-2"></span>
-            <input class="col-1 form-control" type="submit" value="Submit"/><br/><br/>
-        </div>
-
-    </form>
-
-    <div th:replace="fragments/base :: script"></div>
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"> </script>
+    <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"> </script>
+    <script th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.min.js}"> </script>
 
 </body>
 </html>

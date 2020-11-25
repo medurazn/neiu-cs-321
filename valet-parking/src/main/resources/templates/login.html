@@ -2,47 +2,86 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Valet Parking</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
 
-<head th:insert="fragments/base :: contentHead"></head>
-
+</head>
 <body>
-    <nav th:insert="fragments/base :: navigation"></nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <span class="navbar-brand">VALPAL</span>
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse"
+                data-target="#navbarSuppertedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/' ? 'active' : ''}">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/login' ? 'active' : ''}"
+                    th:if="${#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/register' ? 'active' : ''}"
+                    th:if="${#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/register}">Register</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/vehicle' ? 'active' : ''}"
+                    th:if="${!#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/vehicle}">Log Vehicle</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/logout' ? 'active' : ''}"
+                    th:if="${!#authentication.getName().equals('anonymousUser')}">
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="row justify-content-center">
-        <h1 class="col-12 text-center mt-5">Login to ValPal</h1>
+    <div class="container-fluid mt-5">
+
+        <div class="row justify-content-center">
+            <h1 class="col-12 text-center">Login to ValPal</h1>
+        </div>
+
+        <div class="row justify-content-center mt-2 mb-2">
+            <img th:src="@{images/lambo.jpg}"/>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+            <div th:if="${param.error}">
+                Unable to login. Check your username and password.
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <form method="post" th:action="@{/login}" id="loginForm">
+
+                <label for="username">Username: </label>
+                <input type="text" th:name="username" id="username"/><br/><br/>
+
+                <label for="password">Password</label>
+                <input type="password" th:name="password" id="password"/><br/><br/>
+
+                <input type="submit" value="login"/>
+            </form>
+        </div>
+
     </div>
 
-    <div th:replace="fragments/base :: bodyImage"></div>
+    <span class="validationError"
+          th:if="${param.error}">Username or password is incorrect</span>
 
-    <div class="row justify-content-center">
-        <div class="row justify-content-center" th:if="${param.error}">
-            <label class="col-md-10" >Unable to login. Check your username and password.</label>
-        </div>
-    </div>
-
-    <form class="container-fluid" method="post" th:action="@{/login}" id="loginForm">
-        <div class="row form-group justify-content-center">
-            <label class="col-form-label col-1 text-right font-weight-bold" for="username">Username: </label>
-            <input class="form-control col-5 col-md-2" type="text" th:name="username" id="username"/><br/><br/>
-        </div>
-
-        <div class="row form-group justify-content-center">
-            <label class="col-form-label col-1 text-right font-weight-bold" for="password">Password: </label>
-            <input class="form-control col-5 col-md-2" type="password" th:name="password" id="password"/><br/><br/>
-        </div>
-
-        <div class="row form-group justify-content-center">
-            <span class="form-control-sm col-5 col-md-3 validationError"
-                  th:if="${param.error}">Username or Password is incorrect</span>
-        </div>
-
-        <div class="row form-group justify-content-center">
-            <span class="col-6 col-md-2"></span>
-            <input class="col-1 form-control" type="submit" value="login"/><br/><br/>
-        </div>
-    </form>
-
-    <div th:replace="fragments/base :: script"></div>
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"> </script>
+    <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"> </script>
+    <script th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.min.js}"> </script>
 
 </body>
 </html>
