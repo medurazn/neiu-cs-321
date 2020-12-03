@@ -14,4 +14,7 @@ public interface VehicleRepository  extends CrudRepository<Vehicle, Long> {
     Vehicle findByTicket(String ticket);
 
     List<Vehicle> findAllByUser(User user, Pageable pageable);
+
+    Vehicle deleteById(long id);
+
 }

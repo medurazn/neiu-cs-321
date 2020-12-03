@@ -17,15 +17,13 @@
             <h1 id="title">VALPAL</h1>
         </div>
 
-        <div class="row justify-content-center mt-2 mb-2">
-            <img th:src="@{/images/lambo.jpg}"/>
-        </div>
+        <div th:replace="fragments/base :: bodyImage"></div>
 
         <div class="row justify-content-center">
             <h3>Thank you for your submission</h3>
         </div>
     </div>
-    <div th:replace="fragments/base :: script"></div>
 
 </body>
+<th:block th:insert="fragments/base :: scripts"></th:block>
 </html>

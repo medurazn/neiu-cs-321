@@ -32,7 +32,6 @@ public class DisplayVehicleController {
 
     @GetMapping
     public String displayVehicle() {
-
         return "display_vehicle";
     }
 

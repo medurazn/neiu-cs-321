@@ -6,17 +6,16 @@
 <head th:insert="fragments/base :: contentHead"></head>
 
 <body>
-    <nav th:insert="fragments/base :: navigation"></nav>
-    <div class="row justify-content-center">
-        <h1 class="col-12 text-center">Hi, <span class="username" th:text="${#authentication.getPrincipal().getUsername()}">NAME</span></h1>
-    </div>
-    <div class="row justify-content-center">
-        <h1 class="col-12 text-center mt-2">Log Vehicle Information</h1>
+    <div th:replace="fragments/base :: navigation"></div>
+
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <h1 class="col-12 text-center">Update Vehicle!</h1>
+        </div>
+        <div th:replace="fragments/base :: bodyImage"></div>
     </div>
 
-    <div th:replace="fragments/base :: bodyImage"></div>
-
-    <form class="container-fluid" method="post" th:object="${vehicle}">
+    <form class="container-fluid" method="post" th:action="@{/modify/update/{vehicleId}(vehicleId=${vehicle.id})}" th:object="${vehicle}">
         <div class="row justify-content-center">
             <div class="justify-content-center mt-2">
                 <label class="col-form-label text-center font-weight-bold">Select Vehicle Type: </label>
@@ -103,8 +102,8 @@
         </div>
 
         <div class="row form-group justify-content-center">
-            <span class="col-6 col-md-2"></span>
-            <input class="col-1 form-control" type="submit" value="Submit"/><br/><br/>
+            <a th:href="@{/display_vehicle}" class="btn btn-outline-dark btn-lg col-auto form-group mr-2">Cancel</a>
+            <input class="btn btn-outline-dark btn-lg col-auto form-group" type="submit" value="Update"/><br/>
         </div>
     </form>
 

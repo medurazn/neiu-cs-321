@@ -16,12 +16,12 @@
 
     <div class="row justify-content-center">
         <div class="row justify-content-center" th:if="${param.error}">
-            <label class="col-md-10" >Unable to login. Check your username and password.</label>
+            <label>Unable to login. Check your username and password.</label>
         </div>
     </div>
 
     <form class="container-fluid" method="post" th:action="@{/login}" id="loginForm">
-        <div class="row form-group justify-content-center">
+        <div class="row form-group justify-content-center mt-3">
             <label class="col-form-label col-1 text-right font-weight-bold" for="username">Username: </label>
             <input class="form-control col-5 col-md-2" type="text" th:name="username" id="username"/><br/><br/>
         </div>
@@ -32,7 +32,7 @@
         </div>
 
         <div class="row form-group justify-content-center">
-            <span class="form-control-sm col-5 col-md-3 validationError"
+            <span class="col-form-label text-right validationError"
                   th:if="${param.error}">Username or Password is incorrect</span>
         </div>
 
@@ -42,7 +42,6 @@
         </div>
     </form>
 
-    <div th:replace="fragments/base :: script"></div>
-
 </body>
+<th:block th:insert="fragments/base :: scripts"></th:block>
 </html>

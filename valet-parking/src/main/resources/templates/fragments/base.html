@@ -51,7 +51,7 @@
 </nav>
 
 <div th:fragment="bodyImage" class="row justify-content-center mt-2 mb-2">
-    <img th:src="@{images/lambo.jpg}"/>
+    <img th:src="@{/images/lambo.jpg}"/>
 </div>
 
 <div th:fragment="errorTitleAndImage" class="container-fluid mt-5">
@@ -64,11 +64,11 @@
     </div>
 </div>
 
-<div th:fragment="script">
+<th:block th:fragment="scripts">
     <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"> </script>
     <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"> </script>
     <script th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.min.js}"> </script>
-</div>
+</th:block>
 
 </body>
 </html>

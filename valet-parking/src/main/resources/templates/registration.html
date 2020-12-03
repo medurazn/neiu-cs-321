@@ -21,7 +21,7 @@
                 <input class="form-control col-5 col-md-2" type="text" th:name="username" th:value="*{username}" id="username"/>
             </div>
             <div class="row form-group justify-content-center">
-                <span class="form-control-sm col-5 col-md-3 validationError" th:if="${#fields.hasErrors('username')}"
+                <span class="validationError" th:if="${#fields.hasErrors('username')}"
                       th:errors="*{username}">Username Error</span>
             </div>
             <div class="row form-group justify-content-center">
@@ -29,7 +29,7 @@
                 <input class="form-control col-5 col-md-2" type="password" th:name="password" th:value="*{password}" id="password"/>
             </div>
             <div class="row form-group justify-content-center">
-                <span class="form-control-sm col-5 col-md-3 validationError" th:if="${#fields.hasErrors('password')}"
+                <span class="validationError" th:if="${#fields.hasErrors('password')}"
                       th:errors="*{password}">Password Error</span>
             </div>
             <div class="row form-group justify-content-center">
@@ -37,7 +37,7 @@
                 <input class="form-control col-5 col-md-2" type="text" th:name="fullName" th:value="*{fullName}" id="fullName"/>
             </div>
             <div class="row form-group justify-content-center">
-                <span class="form-control-sm col-5 col-md-3 validationError" th:if="${#fields.hasErrors('fullName')}"
+                <span class="validationError" th:if="${#fields.hasErrors('fullName')}"
                       th:errors="*{fullName}">Name Error</span>
             </div>
             <div class="row form-group justify-content-center">
@@ -45,7 +45,7 @@
                 <input class="form-control col-5 col-md-2" type="text" th:name="street" th:value="*{street}" id="street"/>
             </div>
             <div class="row form-group justify-content-center">
-                <span class="form-control-sm col-5 col-md-3 validationError" th:if="${#fields.hasErrors('street')}"
+                <span class="validationError" th:if="${#fields.hasErrors('street')}"
                       th:errors="*{street}">Street Error</span>
             </div>
             <div class="row form-group justify-content-center">
@@ -53,7 +53,7 @@
                 <input class="form-control col-5 col-md-2" type="text" th:name="city" th:value="*{city}" id="city"/>
             </div>
             <div class="row form-group justify-content-center">
-                <span class="form-control-sm col-5 col-md-3 validationError" th:if="${#fields.hasErrors('city')}"
+                <span class="validationError" th:if="${#fields.hasErrors('city')}"
                       th:errors="*{city}">City Error</span>
             </div>
             <div class="row form-group justify-content-center">
@@ -61,7 +61,7 @@
                 <input class="form-control col-5 col-md-2" type="text" th:name="state" th:value="*{state}" id="state"/>
             </div>
             <div class="row form-group justify-content-center">
-                <span class="form-control-sm col-5 col-md-3 validationError" th:if="${#fields.hasErrors('state')}"
+                <span class="validationError" th:if="${#fields.hasErrors('state')}"
                       th:errors="*{state}">State Error</span>
             </div>
             <div class="row form-group justify-content-center">
@@ -69,7 +69,7 @@
                 <input class="form-control col-5 col-md-2" type="text" th:name="zip" th:value="*{zip}" id="zip"/>
             </div>
             <div class="row form-group justify-content-center">
-                <span class="form-control-sm col-5 col-md-3 validationError" th:if="${#fields.hasErrors('zip')}"
+                <span class="validationError" th:if="${#fields.hasErrors('zip')}"
                       th:errors="*{zip}">Zip Error</span>
             </div>
             <div class="row form-group justify-content-center">
@@ -77,7 +77,7 @@
                 <input class="form-control col-5 col-md-2" type="text" th:name="phone" th:value="*{phone}" id="phone"/>
             </div>
             <div class="row form-group justify-content-center">
-                <span class="form-control-sm col-5 col-md-3 validationError" th:if="${#fields.hasErrors('phone')}"
+                <span class="validationError" th:if="${#fields.hasErrors('phone')}"
                       th:errors="*{phone}">Phone Error</span>
             </div>
 
@@ -89,7 +89,6 @@
         </form>
     </div>
 
-    <div th:replace="fragments/base :: script"></div>
-
 </body>
+<th:block th:insert="fragments/base :: scripts"></th:block>
 </html>

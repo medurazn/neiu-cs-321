@@ -6,37 +6,98 @@
 <head th:insert="fragments/base :: contentHead"></head>
 
 <body>
-<nav th:insert="fragments/base :: navigation"></nav>
+    <div th:replace="fragments/base :: navigation"></div>
 
     <div class="container-fluid mt-5">
-
         <div class="row justify-content-center">
-            <h1 class="col-12 text-center" th:text="${'Hi, ' + username}">Hi</h1>
+            <h1 class="col-12 text-center">Hi, <span th:text="${username}">NAME</span></h1>
         </div>
-
         <div class="row justify-content-center">
-            <h1 class="col-12 text-center">Vehicles Saved</h1>
+            <h1 class="col-12 text-center">Here are your vehicles!</h1>
         </div>
-
         <div th:replace="fragments/base :: bodyImage"></div>
+    </div>
 
-        <div class="text-center">
-            <div class="box" th:each="Vehicle: ${vehicles}">
-                <h3 th:text="'Type: ' + ${Vehicle.category.type}"></h3>
-                <h3 th:text="'Make: ' + ${Vehicle.make}"></h3>
-                <h3 th:text="'Model: ' + ${Vehicle.model}"></h3>
-                <h3 th:text="'Color: ' + ${Vehicle.color}"></h3>
-                <h3 th:text="'Year: ' + ${Vehicle.year}"></h3>
-                <h3 th:text="'Ticket: ' + ${Vehicle.ticket}"></h3>
-                <h3 th:text="'Location: ' + ${Vehicle.location}"></h3>
-                <h3 th:text="'Plate Number: ' + ${Vehicle.plate}"></h3>
-                <h3 th:text="'Created at: ' + ${Vehicle.createdAt}"></h3>
+    <div class="container-fluid mt-4" th:each="vehicle: ${vehicles}">
+
+        <div class="row justify-content-center mt-2">
+            <div class="text-left">
+                <span class="font-weight-bold ">Ticket Number is: </span>
+                <span th:text="${vehicle.ticket}" class="">Ticket</span>
             </div>
         </div>
 
-    </div>
+        <div class="box container-fluid mt-2">
+            <div class="row justify-content-center mt-2">
+                <div class="col-7 text-left">
+                    <span class="font-weight-bold">Type of vehicle: </span>
+                    <span th:text="${vehicle.category.type}">Type</span>
+                </div>
+            </div>
 
-    <div th:replace="fragments/base :: script"></div>
+            <div class="row justify-content-center mt-2">
+                <div class="col-7 text-left">
+                    <span class="font-weight-bold">Make: </span>
+                    <span th:text="${vehicle.make}">Make</span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-2">
+                <div class="col-7 text-left">
+                    <span class="font-weight-bold">Model: </span>
+                    <span th:text="${vehicle.model}">Model</span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-2">
+                <div class="col-7 text-left">
+                    <span class="font-weight-bold">Color: </span>
+                    <span th:text="${vehicle.color}">Color</span>
+                </div>
+            </div>
+
+<!--            <div class="row justify-content-center mt-2">-->
+<!--                <div class="col-7 text-left">-->
+<!--                    <span class="font-weight-bold">Year: </span>-->
+<!--                    <span th:text="${vehicle.year}">Year</span>-->
+<!--                </div>-->
+<!--            </div>-->
+
+            <div class="row justify-content-center mt-2">
+                <div class="col-7 text-left">
+                    <span class="font-weight-bold">Location: </span>
+                    <span th:text="${vehicle.location}">Location</span>
+                </div>
+            </div>
+
+<!--            <div class="row justify-content-center mt-2">-->
+<!--                <div class="col-7 text-left">-->
+<!--                    <span class="font-weight-bold">Plate: </span>-->
+<!--                    <span th:text="${vehicle.plate}">Plate</span>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="row justify-content-center mt-2">-->
+<!--                <div class="col-7 text-left">-->
+<!--                    <span class="font-weight-bold">Vehicle logged date: </span>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="row justify-content-center mt-2">
+<!--                <div class="col-7 text-left">-->
+<!--                    <span th:text="${#temporals.format(vehicle.createdAt, 'dd-MMM-yyyy HH:mm')}">Date</span>-->
+<!--                </div>-->
+                <div class="col-7 mt-2">
+                    <a th:href="@{/modify/{vehicleId}(vehicleId=${vehicle.id})}" class="btn btn-sm btn-dark">Update</a>
+                    <a th:href="@{/view/{vehicleId}(vehicleId=${vehicle.id})}" class="btn btn-sm btn-dark">More details</a>
+                    <a th:href="@{/delete/{vehicleId}(vehicleId=${vehicle.id})}" class="btn btn-sm btn-dark">Delete</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div><br/><br/>
 
 </body>
+<th:block th:insert="fragments/base :: scripts"></th:block>
 </html>

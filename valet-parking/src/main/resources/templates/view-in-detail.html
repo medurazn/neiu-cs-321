@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+
+<head th:insert="fragments/base :: contentHead"></head>
+<body>
+    <div th:replace="fragments/base :: navigation"></div>
+
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <h1 class="col-12 text-center">Selected Vehicle in Detail!</h1>
+        </div>
+        <div th:replace="fragments/base :: bodyImage"></div>
+    </div>
+
+    <form method="post" th:object="${vehicle}">
+        <div class="box container-fluid mt-5">
+            <div class="row justify-content-center mt-2">
+                <div class="col-7 text-left">
+                    <span class="font-weight-bold">Make: </span>
+                    <span th:text="${vehicle.make}">Make</span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-2">
+                <div class="col-7 text-left">
+                    <span class="font-weight-bold">Model: </span>
+                    <span th:text="${vehicle.model}">Model</span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-2">
+                <div class="col-7 text-left">
+                    <span class="font-weight-bold">Color: </span>
+                    <span th:text="${vehicle.color}">Color</span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-2">
+                <div class="col-7 text-left">
+                    <span class="font-weight-bold">Year: </span>
+                    <span th:text="${vehicle.year}">Year</span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-2">
+                <div class="col-7 text-left">
+                    <span class="font-weight-bold">Location: </span>
+                    <span th:text="${vehicle.location}">Location</span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-2">
+                <div class="col-7 text-left">
+                    <span class="font-weight-bold">Plate: </span>
+                    <span th:text="${vehicle.plate}">Plate</span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-2">
+                <div class="col-7 text-left">
+                    <span class="font-weight-bold">Vehicle logged date: </span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-2">
+                <div class="col-7 text-left">
+                    <span th:text="${#temporals.format(vehicle.createdAt, 'dd-MMM-yyyy HH:mm')}">Date</span>
+                </div>
+                <div class="col-7 mt-2">
+                    <a th:href="@{/display_vehicle}" class="btn btn-dark btn-sm">View All</a>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+</body>
+<th:block th:insert="fragments/base :: scripts"></th:block>
+</html>
