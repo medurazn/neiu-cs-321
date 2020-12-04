@@ -19,28 +19,28 @@
             <label>Unable to login. Check your username and password.</label>
         </div>
     </div>
+    <div class="row justify-content-center">
+        <form class="container-fluid" method="post" th:action="@{/login}" id="loginForm">
+            <div class="row form-group justify-content-center">
+                <label class="col-form-label font-weight-bold" for="username">Username: </label>
+                <input class="form-control col-5 col-md-2" type="text" th:name="username" id="username"/><br/><br/>
+            </div>
 
-    <form class="container-fluid" method="post" th:action="@{/login}" id="loginForm">
-        <div class="row form-group justify-content-center mt-3">
-            <label class="col-form-label col-1 text-right font-weight-bold" for="username">Username: </label>
-            <input class="form-control col-5 col-md-2" type="text" th:name="username" id="username"/><br/><br/>
-        </div>
+            <div class="row form-group justify-content-center">
+                <label class="col-form-label font-weight-bold" for="username">Password: </label>
+                <input class="form-control col-5 col-md-2" type="text" th:name="password" id="password"/><br/><br/>
+            </div>
 
-        <div class="row form-group justify-content-center">
-            <label class="col-form-label col-1 text-right font-weight-bold" for="password">Password: </label>
-            <input class="form-control col-5 col-md-2" type="password" th:name="password" id="password"/><br/><br/>
-        </div>
+            <div class="row form-group justify-content-center">
+                <span class="col-form-label text-right validationError"
+                      th:if="${param.error}">Username or Password is incorrect</span>
+            </div>
 
-        <div class="row form-group justify-content-center">
-            <span class="col-form-label text-right validationError"
-                  th:if="${param.error}">Username or Password is incorrect</span>
-        </div>
-
-        <div class="row form-group justify-content-center">
-            <span class="col-6 col-md-2"></span>
-            <input class="col-1 form-control" type="submit" value="login"/><br/><br/>
-        </div>
-    </form>
+            <div class="row form-group justify-content-center">
+                <input class="form-control col-5 col-md-2" type="submit" value="login"/><br/><br/>
+            </div>
+        </form>
+    </div>
 
     <div th:replace="fragments/base :: footer"></div>
 
