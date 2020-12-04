@@ -64,11 +64,16 @@
     </div>
 </div>
 
+<div th:fragment="footer" class="footer mt-3">
+    <div class="row justify-content-center">
+        <p>Copyright &#169; 2020 Mario Durazno CS 321-1</p>
+    </div>
+</div>
+
+</body>
 <th:block th:fragment="scripts">
     <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"> </script>
     <script th:src="@{/webjars/popper.js/1.16.0/umd/popper.min.js}"> </script>
     <script th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.min.js}"> </script>
 </th:block>
-
-</body>
 </html>

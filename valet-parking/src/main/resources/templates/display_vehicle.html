@@ -70,12 +70,12 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center mt-2">
-                <div class="col-7 text-left">
-                    <span class="font-weight-bold">Plate: </span>
-                    <span th:text="${vehicle.plate}">Plate</span>
-                </div>
-            </div>
+<!--            <div class="row justify-content-center mt-2">-->
+<!--                <div class="col-7 text-left">-->
+<!--                    <span class="font-weight-bold">Plate: </span>-->
+<!--                    <span th:text="${vehicle.plate}">Plate</span>-->
+<!--                </div>-->
+<!--            </div>-->
 
 <!--            <div class="row justify-content-center mt-2">-->
 <!--                <div class="col-7 text-left">-->
@@ -96,7 +96,9 @@
 
         </div>
 
-    </div><br/><br/>
+    </div><br/>
+
+    <div th:replace="fragments/base :: footer"></div>
 
 </body>
 <th:block th:insert="fragments/base :: scripts"></th:block>
