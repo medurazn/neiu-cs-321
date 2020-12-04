@@ -66,18 +66,10 @@ public class ModifyVehicleController {
         model.addAttribute("categories", categories);
     }
 
-//    @RequestMapping(value = "/delete/{vehicleId}")
-//    public String deleteVehicle(@PathVariable("vehicleId") long id) {
-//        vehicleRepo.deleteById(id);
-//        return "redirect:/display_vehicle";
-//
-//    }
-
-    @DeleteMapping("/delete/{vehicleId}")
-    @ResponseStatus (code = HttpStatus.NO_CONTENT)
-    public void deleteVehicle(@PathVariable("vehicleId") long id){
-        try {
-            vehicleRepo.deleteById(id);
-        } catch (EmptyResultDataAccessException e) {}
+    @GetMapping("/delete/{vehicleId}")
+    public String deleteVehicle(@PathVariable("vehicleId") long id) {
+        vehicleRepo.deleteById(id);
+        return "delete-vehicle";
     }
+
 }
