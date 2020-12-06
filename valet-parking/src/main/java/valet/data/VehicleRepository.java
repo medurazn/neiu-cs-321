@@ -17,4 +17,5 @@ public interface VehicleRepository  extends CrudRepository<Vehicle, Long> {
 
     Vehicle deleteById(long id);
 
+
 }

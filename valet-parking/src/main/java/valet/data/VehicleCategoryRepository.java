@@ -5,4 +5,5 @@ import valet.VehicleCategory;
 
 public interface VehicleCategoryRepository  extends CrudRepository<VehicleCategory, String> {
 
+
 }

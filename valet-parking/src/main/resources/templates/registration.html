@@ -14,80 +14,78 @@
 
     <div th:replace="fragments/base :: bodyImage"></div>
 
-    <div class="row justify-content-center">
-        <form class="container-fluid" method="post" th:action="@{/register}" th:object="${registrationForm}">
-            <div class="row form-group justify-content-center">
-                <label class="col-form-label col-1 text-right font-weight-bold" for="username">Username: </label>
-                <input class="form-control col-5 col-md-2" type="text" th:name="username" th:value="*{username}" id="username"/>
-            </div>
-            <div class="row form-group justify-content-center">
-                <span class="validationError" th:if="${#fields.hasErrors('username')}"
-                      th:errors="*{username}">Username Error</span>
-            </div>
-            <div class="row form-group justify-content-center">
-                <label class="col-form-label col-1 text-right font-weight-bold" for="password">Password: </label>
-                <input class="form-control col-5 col-md-2" type="password" th:name="password" th:value="*{password}" id="password"/>
-            </div>
-            <div class="row form-group justify-content-center">
-                <span class="validationError" th:if="${#fields.hasErrors('password')}"
-                      th:errors="*{password}">Password Error</span>
-            </div>
-            <div class="row form-group justify-content-center">
-                <label class="col-form-label col-1 text-right font-weight-bold" for="fullName">Name: </label>
-                <input class="form-control col-5 col-md-2" type="text" th:name="fullName" th:value="*{fullName}" id="fullName"/>
-            </div>
-            <div class="row form-group justify-content-center">
-                <span class="validationError" th:if="${#fields.hasErrors('fullName')}"
-                      th:errors="*{fullName}">Name Error</span>
-            </div>
-            <div class="row form-group justify-content-center">
-                <label class="col-form-label col-1 text-right font-weight-bold" for="street">Street: </label>
-                <input class="form-control col-5 col-md-2" type="text" th:name="street" th:value="*{street}" id="street"/>
-            </div>
-            <div class="row form-group justify-content-center">
-                <span class="validationError" th:if="${#fields.hasErrors('street')}"
-                      th:errors="*{street}">Street Error</span>
-            </div>
-            <div class="row form-group justify-content-center">
-                <label class="col-form-label col-1 text-right font-weight-bold" for="city">City: </label>
-                <input class="form-control col-5 col-md-2" type="text" th:name="city" th:value="*{city}" id="city"/>
-            </div>
-            <div class="row form-group justify-content-center">
-                <span class="validationError" th:if="${#fields.hasErrors('city')}"
-                      th:errors="*{city}">City Error</span>
-            </div>
-            <div class="row form-group justify-content-center">
-                <label class="col-form-label col-1 text-right font-weight-bold" for="state">State: </label>
-                <input class="form-control col-5 col-md-2" type="text" th:name="state" th:value="*{state}" id="state"/>
-            </div>
-            <div class="row form-group justify-content-center">
-                <span class="validationError" th:if="${#fields.hasErrors('state')}"
-                      th:errors="*{state}">State Error</span>
-            </div>
-            <div class="row form-group justify-content-center">
-                <label class="col-form-label col-1 text-right font-weight-bold" for="zip">Zip: </label>
-                <input class="form-control col-5 col-md-2" type="text" th:name="zip" th:value="*{zip}" id="zip"/>
-            </div>
-            <div class="row form-group justify-content-center">
-                <span class="validationError" th:if="${#fields.hasErrors('zip')}"
-                      th:errors="*{zip}">Zip Error</span>
-            </div>
-            <div class="row form-group justify-content-center">
-                <label class="col-form-label col-1 text-right font-weight-bold" for="phone">Phone: </label>
-                <input class="form-control col-5 col-md-2" type="text" th:name="phone" th:value="*{phone}" id="phone"/>
-            </div>
-            <div class="row form-group justify-content-center">
-                <span class="validationError" th:if="${#fields.hasErrors('phone')}"
-                      th:errors="*{phone}">Phone Error</span>
-            </div>
+    <form class="container-fluid mt-4" method="post" th:action="@{/register}" th:object="${registrationForm}">
+        <div class="row form-group justify-content-center">
+            <label class="col-form-label col-1.5 text-right font-weight-bold" for="password">Username: </label>
+            <input class="form-control col-5 col-md-2" type="text" th:name="username" th:value="*{username}" id="username"/>
+        </div>
+        <div class="row form-group justify-content-center">
+            <span class="validationError" th:if="${#fields.hasErrors('username')}"
+                  th:errors="*{username}">Username Error</span>
+        </div>
+        <div class="row form-group justify-content-center">
+            <label class="col-form-label col-1.5 text-right font-weight-bold" for="password">Password: </label>
+            <input class="form-control col-5 col-md-2" type="password" th:name="password" th:value="*{password}" id="password"/>
+        </div>
+        <div class="row form-group justify-content-center">
+            <span class="validationError" th:if="${#fields.hasErrors('password')}"
+                  th:errors="*{password}">Password Error</span>
+        </div>
+        <div class="row form-group justify-content-center ml-auto">
+            <label class="col-form-label col-1.5 text-right font-weight-bold" for="fullName">Name: </label>
+            <input class="form-control col-5 col-md-2" type="text" th:name="fullName" th:value="*{fullName}" id="fullName"/>
+        </div>
+        <div class="row form-group justify-content-center">
+            <span class="validationError" th:if="${#fields.hasErrors('fullName')}"
+                  th:errors="*{fullName}">Name Error</span>
+        </div>
+        <div class="row form-group justify-content-center ml-auto">
+            <label class="col-form-label col-1.5text-right font-weight-bold" for="street">Street: </label>
+            <input class="form-control col-5 col-md-2" type="text" th:name="street" th:value="*{street}" id="street"/>
+        </div>
+        <div class="row form-group justify-content-center">
+            <span class="validationError" th:if="${#fields.hasErrors('street')}"
+                  th:errors="*{street}">Street Error</span>
+        </div>
+        <div class="row form-group justify-content-center ml-auto">
+            <label class="col-form-label col-1.5 text-right font-weight-bold" for="city">City: </label>
+            <input class="form-control col-5 col-md-2" type="text" th:name="city" th:value="*{city}" id="city"/>
+        </div>
+        <div class="row form-group justify-content-center">
+            <span class="validationError" th:if="${#fields.hasErrors('city')}"
+                  th:errors="*{city}">City Error</span>
+        </div>
+        <div class="row form-group justify-content-center ml-auto">
+            <label class="col-form-label col-1.5 text-right font-weight-bold" for="state">State: </label>
+            <input class="form-control col-5 col-md-2" type="text" th:name="state" th:value="*{state}" id="state"/>
+        </div>
+        <div class="row form-group justify-content-center">
+            <span class="validationError" th:if="${#fields.hasErrors('state')}"
+                  th:errors="*{state}">State Error</span>
+        </div>
+        <div class="row form-group justify-content-center ml-auto">
+            <label class="col-form-label col-1.5 text-right font-weight-bold" for="zip">Zip: </label>
+            <input class="form-control col-5 col-md-2" type="text" th:name="zip" th:value="*{zip}" id="zip"/>
+        </div>
+        <div class="row form-group justify-content-center">
+            <span class="validationError" th:if="${#fields.hasErrors('zip')}"
+                  th:errors="*{zip}">Zip Error</span>
+        </div>
+        <div class="row form-group justify-content-center ml-auto">
+            <label class="col-form-label col-1.5 text-right font-weight-bold" for="phone">Phone: </label>
+            <input class="form-control col-5 col-md-2" type="tel" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                   th:name="phone" th:value="*{phone}" id="phone"/>
+        </div>
+        <div class="row form-group justify-content-center">
+            <span class="validationError" th:if="${#fields.hasErrors('phone')}"
+                  th:errors="*{phone}">Phone Error</span>
+        </div>
 
-            <div class="row form-group justify-content-center">
-                <span class="col-6 col-md-2"></span>
-                <input class="col-1 form-control" type="submit" value="Register"/><br/><br/>
-            </div>
+        <div class="row form-group justify-content-center">
+            <input class="col-md-1" type="submit" value="Register"/><br/><br/>
+        </div>
 
-        </form>
-    </div>
+    </form>
 
     <div th:replace="fragments/base :: footer"></div>
 

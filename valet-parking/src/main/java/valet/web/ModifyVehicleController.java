@@ -47,7 +47,7 @@ public class ModifyVehicleController {
             return "update-vehicle";
 
         Vehicle newVehicle = vehicleRepo.findById(id).get();
-        newVehicle.setTicket(vehicle.getTicket());
+        //newVehicle.setTicket(vehicle.getTicket());
         newVehicle.setCategory(vehicle.getCategory());
         newVehicle.setMake(vehicle.getMake());
         newVehicle.setModel(vehicle.getModel());
@@ -60,7 +60,7 @@ public class ModifyVehicleController {
 
         return "redirect:/display_vehicle";
     }
-
+    @ModelAttribute
     private void addCategoryToModel(Model model) {
         List<VehicleCategory> categories = (List<VehicleCategory>) categoryRepo.findAll();
         model.addAttribute("categories", categories);

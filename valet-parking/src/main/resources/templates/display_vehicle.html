@@ -56,13 +56,6 @@
                 </div>
             </div>
 
-<!--            <div class="row justify-content-center mt-2">-->
-<!--                <div class="col-7 text-left">-->
-<!--                    <span class="font-weight-bold">Year: </span>-->
-<!--                    <span th:text="${vehicle.year}">Year</span>-->
-<!--                </div>-->
-<!--            </div>-->
-
             <div class="row justify-content-center mt-2">
                 <div class="col-7 text-left">
                     <span class="font-weight-bold">Location: </span>
@@ -70,28 +63,13 @@
                 </div>
             </div>
 
-<!--            <div class="row justify-content-center mt-2">-->
-<!--                <div class="col-7 text-left">-->
-<!--                    <span class="font-weight-bold">Plate: </span>-->
-<!--                    <span th:text="${vehicle.plate}">Plate</span>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            <div class="row justify-content-center mt-2">-->
-<!--                <div class="col-7 text-left">-->
-<!--                    <span class="font-weight-bold">Vehicle logged date: </span>-->
-<!--                </div>-->
-<!--            </div>-->
             <div class="row justify-content-center mt-2">
-<!--                <div class="col-7 text-left">-->
-<!--                    <span th:text="${#temporals.format(vehicle.createdAt, 'dd-MMM-yyyy HH:mm')}">Date</span>-->
-<!--                </div>-->
                 <div class="col-7 mt-2">
                     <a th:href="@{/modify/{vehicleId}(vehicleId=${vehicle.id})}" class="btn btn-sm btn-dark">Update</a>
                     <a th:href="@{/view/{vehicleId}(vehicleId=${vehicle.id})}" class="btn btn-sm btn-dark">More details</a>
-                    <a th:href="@{/modify/delete/{vehicleId}(vehicleId=${vehicle.id})}" class="btn btn-sm btn-dark">Delete</a>
+                    <a  th:href="@{/modify/delete/{vehicleId}(vehicleId=${vehicle.id})}" class="btn btn-sm btn-dark"
+                        onclick="if (!(confirm('Are you sure you want to delete this vehicle?'))) return false">    Delete</a>
                 </div>
-
             </div>
 
         </div>
